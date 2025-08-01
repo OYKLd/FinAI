@@ -3,6 +3,8 @@ import os
 from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+import markdown
+import re
 from dotenv import load_dotenv  
 load_dotenv()
 
@@ -35,11 +37,57 @@ llm = ChatOpenAI(
 )
 chain = LLMChain(llm=llm, prompt=prompt)
 
+def parse_markdown(text):
+    """
+    Analyse Markdown simple (titres, gras, italique) et retourne une liste de blocs formatés :
+    - type = title / bold / italic / normal
+    - level = 1, 2, 3 (pour les titres)
+    """
+    text = text.strip()
+    
+    # Traitement des titres
+    match = re.match(r"^(#{1,6})\s+(.*)", text)
+    if match:
+        level = len(match.group(1))
+        content = match.group(2)
+        return [(content, f"title_{level}")]
+    
+    # Traitement du gras et italique
+    parts = []
+    pattern = re.compile(r"(\*\*(.*?)\*\*)|(\*(.*?)\*)")  # **bold** ou *italic*
+
+    pos = 0
+    for match in pattern.finditer(text):
+        start, end = match.span()
+        if start > pos:
+            parts.append((text[pos:start], "normal"))
+        if match.group(1):  # **bold**
+            parts.append((match.group(2), "bold"))
+        elif match.group(3):  # *italic*
+            parts.append((match.group(4), "italic"))
+        pos = end
+
+    if pos < len(text):
+        parts.append((text[pos:], "normal"))
+
+    return parts
+
+
 def analyze_data(content):
+    """
+    Prend les données extraites (texte+tables),
+    les transforme en texte et génère un résumé GPT.
+    """
     all_text = []
     for item in content:
-        if item["type"] == "table":
+        if "error" in item:
+            all_text.append(f"Erreur lors du traitement du fichier : {item['error']}")
+        elif item["type"] == "table":
             all_text.append(item["data"].to_csv(index=False))
         elif item["type"] in ("text", "pdf"):
             all_text.append(item.get("text", ""))
-    return chain.run(data_str="\n\n".join(all_text))
+
+    data_str = "\n\n".join(all_text)
+    raw_result = chain.run(data_str=data_str)
+    
+    return raw_result  # on garde le Markdown brut ici
