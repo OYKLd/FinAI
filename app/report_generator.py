@@ -57,6 +57,21 @@ def generate_pdf_report(summary_text):
     pdf.cell(0, 10, "Rapport Financier généré par IA", ln=True)
     pdf.ln(5)
 
+    # Ajout du graphique utilisateur s'il existe
+    graph_path = os.path.join("app", "graphique_utilisateur.png")
+    if os.path.exists(graph_path):
+        try:
+            pdf.set_font("DejaVu", "B", 12)
+            pdf.cell(0, 10, "Graphique généré à partir des données utilisateur :", ln=True)
+            pdf.ln(2)
+            # Largeur max = 170mm, hauteur max = 100mm
+            pdf.image(graph_path, w=170, h=100)
+            pdf.ln(8)
+        except Exception as e:
+            pdf.set_font("DejaVu", "", 10)
+            pdf.cell(0, 10, f"Erreur lors de l'insertion du graphique : {e}", ln=True)
+            pdf.ln(5)
+
     # Contenu : traite chaque ligne en Markdown
     for line in summary_text.split("\n"):
         if not line.strip():
