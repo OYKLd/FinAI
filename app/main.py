@@ -9,7 +9,7 @@ from app.analyzer import analyze_data
 from app.report_generator import generate_pdf_report
 
 load_dotenv()
-app = FastAPI(title="FinReport AI")
+app = FastAPI(title="FinAI")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,4 +28,4 @@ async def analyze_files(files: list[UploadFile] = File(...)):
 
 @app.get("/")
 def root():
-    return JSONResponse({"message": "Bienvenue sur FinReport AI API"})
+    return JSONResponse({"message": "Bienvenue sur FinAI API"})
