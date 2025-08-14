@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinAI - Reporting Financier Automatisé</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+        }
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-chart-line text-2xl"></i>
+                <span class="text-xl font-bold">FinAI</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#features" class="animated-underline hover:text-blue-200">Rapports</a>
+                <a href="#how-it-works" class="animated-underline hover:text-blue-200">A propos</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Rapport Financier Automatisé par IA</h1>
+                <p class="text-xl mb-8 text-blue-100">Transformez vos données financières brutes en informations exploitables grâce à notre plateforme intelligente.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
+                        Demarer
+                    </button>
+                    <button class="border border-white text-white hover:bg-blue-700 font-bold py-3 px-6 rounded-lg transition duration-300">
+                        En savoir plus
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="ChatGPT Image 13 août 2025, 22_53_22.png" alt="Financial Dashboard" class="w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fonctionnalités Clés</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Notre plateforme alimentée par IA fournit des rapports financiers complets avec une précision et une efficacité inégalées.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md report-card transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-chart-pie text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Génération automatisée de graphiques</h3>
+                    <p class="text-gray-600">Créez des graphiques clairs et pertinents à partir de vos données en quelques secondes, sans aucune manipulation manuelle.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md report-card transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-file-invoice-dollar text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Génération automatisée de rapports</h3>
+                    <p class="text-gray-600">Créez des bilans, des comptes de résultat, des rapports de trésorerie et des analyses de rentabilité en un seul clic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Comment Fonctionne FinAI</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Notre processus en 3 étapes transforme vos données financières en insights stratégiques.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-12 md:space-y-0">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center max-w-xs">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Connectez Vos Données</h3>
+                    <p class="text-gray-600">Connectez-vous et importez simplement votre fichier pour commencer à exploiter vos données en toute simplicité.</p>
+                </div>
+                
+                <!-- Arrow -->
+                <div class="hidden md:block text-blue-400">
+                    <i class="fas fa-arrow-right text-3xl"></i>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center max-w-xs">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Analyse par IA</h3>
+                    <p class="text-gray-600">Analysez instantanément vos données grâce à l’intelligence artificielle pour obtenir des insights précis et des recommandations pertinentes.</p>
+                </div>
+                
+                <!-- Arrow -->
+                <div class="hidden md:block text-blue-400">
+                    <i class="fas fa-arrow-right text-3xl"></i>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center max-w-xs">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Recevez Vos Rapports</h3>
+                    <p class="text-gray-600">Recevez automatiquement vos rapports complets au format PDF, prêts à être consultés ou partagés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-blue-400"></i>
+                        <span class="text-xl font-bold">FinAI</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Rapport financier automatisé alimenté par l'intelligence artificielle.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/OYKLd" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lydie-ouattara-623710312" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://wa.me/+2250719749695" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+               
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contactez-Nous</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>
+                            <span>Abidjan, Côte d'Ivoire</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-2 text-blue-400"></i>
+                            <span>(+225) 0719749695</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                            <span>lydieouattara828@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 FinAI. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Politique de Confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Conditions d'Utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Function to toggle between reports
+        function showReport(reportId) {
+            // Hide all report contents
+            document.querySelectorAll('.report-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show selected report
+            document.getElementById(reportId).classList.remove('hidden');
+            
+            // Update active button
+            document.querySelectorAll('#demo button').forEach(btn => {
+                btn.classList.remove('bg-blue-600');
+                btn.classList.add('hover:bg-gray-700');
+            });
+            
+            event.target.classList.add('bg-blue-600');
+            event.target.classList.remove('hover:bg-gray-700');
+            
+            // Update report title
+            const titles = {
+                'balance-sheet': 'Balance Sheet',
+                'income-statement': 'Income Statement',
+                'cash-flow': 'Cash Flow Statement',
+                'profitability': 'Profitability Analysis',
+                'kpi': 'KPI Dashboard'
+            };
+            document.getElementById('report-title').textContent = titles[reportId];
+            
+            // Initialize charts if they haven't been already
+            if (reportId === 'income-statement' && !window.incomeChartsInitialized) {
+                renderIncomeStatementCharts();
+                window.incomeChartsInitialized = true;
+            } else if (reportId === 'cash-flow' && !window.cashFlowChartInitialized) {
+                renderCashFlowChart();
+                window.cashFlowChartInitialized = true;
+            } else if (reportId === 'profitability' && !window.profitabilityChartsInitialized) {
+                renderProfitabilityCharts();
+                window.profitabilityChartsInitialized = true;
+            } else if (reportId === 'kpi' && !window.kpiChartsInitialized) {
+                renderKpiCharts();
+                window.kpiChartsInitialized = true;
+            }
+        }
+        
+        // Initialize charts for Income Statement
+        function renderIncomeStatementCharts() {
+            // Revenue Trend Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [
+                        {
+                            label: 'Revenue',
+                            data: [52000, 55000, 58000, 62000, 65000, 69000],
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Expenses',
+                            data: [42000, 43000, 45000, 47000, 48000, 50000],
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Revenue vs Expenses Trend'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Small charts
+            const smallChartOptions = {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            };
+            
+            // Gross Margin Chart
+            new Chart(document.getElementById('grossMarginChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Margin', 'COGS'],
+                    datasets: [{
+                        data: [45.7, 54.3],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(209, 213, 219, 0.5)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: smallChartOptions
+            });
+            
+            // Operating Margin Chart
+            new Chart(document.getElementById('operatingMarginChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Margin', 'Expenses'],
+                    datasets: [{
+                        data: [17.2, 82.8],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(209, 213, 219, 0.5)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: smallChartOptions
+            });
+            
+            // Net Margin Chart
+            new Chart(document.getElementById('netMarginChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Margin', 'Other'],
+                    datasets: [{
+                        data: [17.2, 82.8],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(209, 213, 219, 0.5)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: smallChartOptions
+            });
+        }
+        
+        // Initialize Cash Flow Chart
+        function renderCashFlowChart() {
+            const ctx = document.getElementById('cashFlowChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Operating', 'Investing', 'Financing'],
+                    datasets: [{
+                        label: 'Cash Flow',
+                        data: [68450, -22300, -5000],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(239, 68, 68, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(239, 68, 68, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Cash Flow by Activity'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize Profitability Charts
+        function renderProfitabilityCharts() {
+            // Profit Trend Chart
+            new Chart(document.getElementById('profitTrendChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [
+                        {
+                            label: 'Gross Profit',
+                            data: [120000, 135000, 142000, 157900],
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Net Profit',
+                            data: [45000, 48000, 52000, 59450],
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Quarterly Profit Trend'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Expense Breakdown Chart
+            new Chart(document.getElementById('expenseBreakdownChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Salaries', 'Marketing', 'Rent', 'Utilities', 'Supplies', 'Other'],
+                    datasets: [{
+                        data: [45000, 18000, 12000, 8000, 9500, 6950],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(245, 158, 11, 0.7)',
+                            'rgba(139, 92, 246, 0.7)',
+                            'rgba(20, 184, 166, 0.7)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Expense Breakdown'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize KPI Charts
+        function renderKpiCharts() {
+            // Revenue KPI Chart
+            new Chart(document.getElementById('revenueKpiChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [280000, 305000, 320000, 345200],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Quarterly Revenue'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Margin KPI Chart
+            new Chart(document.getElementById('marginKpiChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [
+                        {
+                            label: 'Gross Margin',
+                            data: [42.8, 43.5, 44.2, 45.7],
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Net Margin',
+                            data: [16.1, 15.7, 16.3, 17.2],
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Margin Trends'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 15,
+                            max: 50
+                        }
+                    }
+                }
+            });
+            
+            // ROI KPI Chart
+            new Chart(document.getElementById('roiKpiChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['Marketing', 'Operations', 'R&D', 'HR', 'Finance', 'IT'],
+                    datasets: [{
+                        label: 'ROI by Department',
+                        data: [25, 19, 30, 12, 22, 18],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(59, 130, 246, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'ROI by Department'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 40
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize the first report (Balance Sheet) by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set balance sheet as active
+            document.querySelector('#demo button').classList.add('bg-blue-600');
+            document.querySelector('#demo button').classList.remove('hover:bg-gray-700');
+        });
+    </script>
+</body>
+</html>
